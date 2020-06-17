@@ -11,6 +11,22 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+-- Dumping structure for table p-paiement.client
+CREATE TABLE IF NOT EXISTS `client` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `telephone` varchar(50) DEFAULT NULL,
+  `nom` varchar(50) DEFAULT NULL,
+  `prenom` varchar(50) DEFAULT NULL,
+  `date_naissance` varchar(50) DEFAULT NULL,
+  `pin` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table p-paiement.client: 0 rows
+DELETE FROM `client`;
+/*!40000 ALTER TABLE `client` DISABLE KEYS */;
+/*!40000 ALTER TABLE `client` ENABLE KEYS */;
+
 -- Dumping structure for table p-paiement.configuration
 CREATE TABLE IF NOT EXISTS `configuration` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
