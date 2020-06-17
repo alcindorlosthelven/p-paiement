@@ -5,7 +5,7 @@
         </div>
         <div class="section mt-2 mb-5 p-3">
             <div class="message"></div>
-            <form action="" class="form-inscription was-validated">
+            <form action="" class="form-inscription was-validated" method="post">
                 <input type="hidden" name="inscription">
                 <div class="form-group basic">
                     <div class="input-wrapper">
@@ -40,17 +40,17 @@
                         <div class="row">
                             <div class="form-group col-4">
                                 <label class="label">Date</label>
-                                <input type="text" class="form-control mois" placeholder="date" required>
+                                <input name="date" type="text" class="form-control mois" placeholder="date" required>
                             </div>
 
                             <div class="form-group col-4">
                                 <label class="label">Mois</label>
-                                <input type="text" class="form-control mois" placeholder="mois" required>
+                                <input name="mois" type="text" class="form-control mois" placeholder="mois" required>
                             </div>
 
                             <div class="form-group col-4">
                                 <label class="label">Année</label>
-                                <input type="text" class="form-control annee" placeholder="année" required>
+                                <input name="annee" type="text" class="form-control annee" placeholder="année" required>
                             </div>
                         </div>
                     </div>
@@ -61,14 +61,9 @@
                     <div class="input-wrapper">
                         <label for="password2">Pin A 6 chiffres</label>
                         <div class="row">
-                            <div class="form-group col-6">
-                                <input type="text" class="form-control pin6c" placeholder="Pin" required>
+                            <div class="form-group col-12">
+                                <input name="pin" type="text" class="form-control pin6c" placeholder="Pin" required>
                             </div>
-
-                            <div class="form-group col-6">
-                                <input type="text" class="form-control pin6c" placeholder="Confirmer Pin" required>
-                            </div>
-
                         </div>
                     </div>
                 </div>

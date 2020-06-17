@@ -6,7 +6,7 @@
         </div>
         <div class="section mt-2 mb-5 p-3">
             <div class="message"></div>
-            <form action="" class="form-sidentifier was-validated">
+            <form action="" class="form-sidentifier was-validated" method="post">
                 <input type="hidden" name="sidentifier">
                 <div class="form-group basic">
                     <div class="input-wrapper">
@@ -18,7 +18,7 @@
                 <div class="form-group basic">
                     <div class="input-wrapper">
                         <label class="label" for="pin">Pin</label>
-                        <input name="pin" type="text" class="form-control pin6c"required>
+                        <input name="pin" type="password" class="form-control" required>
                     </div>
                 </div>
 

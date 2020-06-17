@@ -17,6 +17,7 @@ class Model extends Session
 {
 
     protected $table;
+
     /**
      * @return null|\PDO
      */
@@ -360,4 +361,23 @@ class Model extends Session
         }
     }
 
+    public function remplire($data = array())
+    {
+        $reflection = $this->getReflection($this);
+        $proprietes = $reflection->getProperties();
+        foreach ($proprietes as $propriete) {
+            $propriete->setAccessible(true);
+            $name = $propriete->getName();
+            if (array_key_exists($name, $data)) {
+                $value = trim(addslashes(strip_tags($data[$name])));
+                if($name=="password"){
+                    $value=sha1(md5($value));
+                }
+                if ($value == "") {
+                    $value = "n/a";
+                }
+                $propriete->setValue($this, $value);
+            }
+        }
+    }
 }

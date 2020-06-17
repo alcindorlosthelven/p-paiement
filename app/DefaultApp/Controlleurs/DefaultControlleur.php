@@ -11,9 +11,10 @@ use app\DefaultApp\Models\TestModel;
 use systeme\Controlleur\Controlleur;
 class DefaultControlleur extends Controlleur
 {
+
     public function index(){
         $variable['titre']="Acceuil";
-        return $this->render("default/index",$variable);
+        $this->render("default/index",$variable);
     }
  
 }

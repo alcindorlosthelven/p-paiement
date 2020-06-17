@@ -54,7 +54,6 @@ class ClientControlleur extends Controlleur
     {
         $var['titre'] = "Inscription";
         $var['active'] = "register";
-
         $this->render("client/register", $var);
     }
 }

@@ -1,6 +1,11 @@
 <?php
-use systeme\Application\Application as App;
+if (\systeme\Model\Utilisateur::session()) {
+    ?>
+    <script>document.location.href="index";</script>
+    <?php
+}
 
+use systeme\Application\Application as App;
 
 ?>
 <!doctype html>
@@ -18,18 +23,40 @@ use systeme\Application\Application as App;
     <link rel="apple-touch-icon" sizes="180x180" href="<?= app::autre("assets/img/apple-touch-icon.png") ?>">
     <link rel="icon" type="image/png" href="<?= app::autre("assets/img/favicon.png") ?>" sizes="32x32">
     <link rel="shortcut icon" href="<?= app::autre("assets/img/favicon.png") ?>">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+
+    <style>
+        #ajax-loading {
+            position: fixed;
+            z-index: 9999;
+            background: url('app/DefaultApp/public/img/load.gif') 50% 50% no-repeat;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 100%;
+            cursor: wait;
+        }
+    </style>
+
 </head>
 
 <body>
-
 <!-- loader -->
 <div id="loader">
     <img src="<?= app::autre("assets/img/logo-icon.png") ?>" alt="icon" class="loading-icon">
 </div>
+<div id="ajax-loading"></div>
 <!-- * loader -->
 
 <!-- App Header -->
@@ -43,12 +70,12 @@ use systeme\Application\Application as App;
             <span class="badge badge-danger">4</span>
         </a>-->
         <?php
-        if(\systeme\Model\Utilisateur::session()){
+        if (\systeme\Model\Utilisateur::session()) {
             ?>
             <a href="logout" class="headerButton btn btn-primary">
                 Deconnecter
             </a>
-        <?php
+            <?php
         }
         ?>
 
@@ -59,52 +86,20 @@ use systeme\Application\Application as App;
 
 <!-- App Capsule -->
 <div id="appCapsule">
-        <div class="col-md-12" style="padding-top: 5px">
-            <input type="hidden" id="latitude" name="latitude" >
-            <input type="hidden" id="longitude" name="longitude">
-            <?php
-            if(isset($contenue)){
-                echo $contenue;
-            }
-            ?>
-        </div>
+    <div class="col-md-12" style="padding-top: 5px">
+        <input type="hidden" id="latitude" name="latitude">
+        <input type="hidden" id="longitude" name="longitude">
+        <?php
+        if (isset($contenue)) {
+            echo $contenue;
+        }
+        ?>
+    </div>
 </div>
 <!-- * App Capsule -->
 
-
-<!-- App Bottom Menu -->
-<div class="appBottomMenu" style="<?php
-if(isset($active)){
-    if($active==="login" or $active==="register"){
-        echo "display:none";
-    }
-}
-?>">
-    <a href="/alerte" class="item <?php if(isset($active)){
-        if($active==="alert"){
-            echo "active";
-        }
-    } ?>">
-        <div class="col">
-            <ion-icon name="pie-chart-outline"></ion-icon>
-            <h3><strong>ALERTES</strong></h3>
-        </div>
-    </a>
-
-    <a href="contact" class="item  <?php if(isset($active)){
-        if($active==="message"){
-            echo "active";
-        }
-    } ?>">
-        <div class="col">
-            <ion-icon name="document-text-outline"></ion-icon>
-            <h3><strong>Message</strong></h3>
-        </div>
-    </a>
-</div>
-<!-- * App Bottom Menu -->
-
-<script type="text/javascript" src="<?=App::autre("assets/js/jquery.maskedinput-master/src/jquery.maskedinput.js")?>"></script>
+<script type="text/javascript"
+        src="<?= App::autre("assets/js/jquery.maskedinput-master/src/jquery.maskedinput.js") ?>"></script>
 <script>
     /*setTimeout(() => {
         notification('notification-example', 5000);
@@ -131,6 +126,7 @@ if(isset($active)){
 <script src="<?= app::autre("assets/js/plugins/owl-carousel/owl.carousel.min.js") ?>"></script>
 <!-- Base Js File -->
 <script src="<?= app::autre("assets/js/base.js") ?>"></script>
+<script src="<?= app::autre("app.js") ?>"></script>
 
 </body>
 </html>
